@@ -1,0 +1,14 @@
+/Users/gr/Repos/privat/invoicing/src/server/bin/Debug/netcoreapp2.1/invoicing.server.deps.json
+/Users/gr/Repos/privat/invoicing/src/server/bin/Debug/netcoreapp2.1/invoicing.server.runtimeconfig.json
+/Users/gr/Repos/privat/invoicing/src/server/bin/Debug/netcoreapp2.1/invoicing.server.runtimeconfig.dev.json
+/Users/gr/Repos/privat/invoicing/src/server/bin/Debug/netcoreapp2.1/invoicing.server.dll
+/Users/gr/Repos/privat/invoicing/src/server/bin/Debug/netcoreapp2.1/invoicing.server.pdb
+/Users/gr/Repos/privat/invoicing/src/server/obj/Debug/netcoreapp2.1/invoicing.server.csprojAssemblyReference.cache
+/Users/gr/Repos/privat/invoicing/src/server/obj/Debug/netcoreapp2.1/invoicing.server.csproj.CoreCompileInputs.cache
+/Users/gr/Repos/privat/invoicing/src/server/obj/Debug/netcoreapp2.1/invoicing.server.RazorAssemblyInfo.cache
+/Users/gr/Repos/privat/invoicing/src/server/obj/Debug/netcoreapp2.1/invoicing.server.RazorAssemblyInfo.cs
+/Users/gr/Repos/privat/invoicing/src/server/obj/Debug/netcoreapp2.1/invoicing.server.AssemblyInfoInputs.cache
+/Users/gr/Repos/privat/invoicing/src/server/obj/Debug/netcoreapp2.1/invoicing.server.AssemblyInfo.cs
+/Users/gr/Repos/privat/invoicing/src/server/obj/Debug/netcoreapp2.1/invoicing.server.RazorTargetAssemblyInfo.cache
+/Users/gr/Repos/privat/invoicing/src/server/obj/Debug/netcoreapp2.1/invoicing.server.dll
+/Users/gr/Repos/privat/invoicing/src/server/obj/Debug/netcoreapp2.1/invoicing.server.pdb
