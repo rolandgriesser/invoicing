@@ -10,11 +10,18 @@ namespace invoicing.server.Controllers
     [ApiController]
     public class ValuesController : ControllerBase
     {
+        private Data.InvoicingDbContext _dbContext;
+        public ValuesController(Data.InvoicingDbContext dbContext)
+        {
+            _dbContext = dbContext;
+        }
+
         // GET api/values
         [HttpGet]
-        public ActionResult<IEnumerable<string>> Get()
+        public ActionResult<IEnumerable<Models.Organization>> Get()
         {
-            return new string[] { "value1", "value2" };
+            return _dbContext.Organizations.ToList();
+            //return new string[] { "value1", "value2" };
         }
 
         // GET api/values/5
