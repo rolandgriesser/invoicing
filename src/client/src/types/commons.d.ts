@@ -1,0 +1,1 @@
+declare var PUBLIC_URL: string;
