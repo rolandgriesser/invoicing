@@ -79,8 +79,10 @@ namespace invoicing.server
                 options.UseSqlite(Configuration.GetConnectionString("InvoicingDbContextConnection"))
             );
 
+//https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-3.0
+
             services.AddDefaultIdentity<Models.User>()
-                .AddUserStore<Data.InvoicingDbContext>();
+                .AddEntityFrameworkStores<Data.InvoicingDbContext>();
 
             services.AddLogging(options => options.AddConsole());
             services.AddMvc()

@@ -1,13 +1,14 @@
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace invoicing.server.Data
 {
-    public class InvoicingDbContext : DbContext {
+    public class InvoicingDbContext : IdentityDbContext<Models.User> {
         public DbSet<Models.Organization> Organizations {get;set;}
 
         public InvoicingDbContext(DbContextOptions<InvoicingDbContext> options) : base(options)
         {
-            
+
         }
 
         protected override void OnModelCreating(ModelBuilder builder)
