@@ -30,9 +30,10 @@ namespace invoicing.server
             services.AddMvc()
                 .AddNewtonsoftJson();
 
-                services.AddDbContext<Data.InvoicingDbContext>(options => {
-                    options.UseSqlite("Filename=./invoicing.sqlite");
-                });
+            services.AddDbContext<Data.InvoicingDbContext>(options =>
+            {
+                options.UseSqlite("Filename=./invoicing.sqlite");
+            }); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
