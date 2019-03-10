@@ -1,9 +1,11 @@
+using System;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace invoicing.server.Data
 {
-    public class InvoicingDbContext : IdentityDbContext<Models.User> {
+    public class InvoicingDbContext : IdentityDbContext<Models.User, IdentityRole<Guid>, Guid> {
         public DbSet<Models.Organization> Organizations {get;set;}
 
         public InvoicingDbContext(DbContextOptions<InvoicingDbContext> options) : base(options)
