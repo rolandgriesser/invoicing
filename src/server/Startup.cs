@@ -1,13 +1,16 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using invoicing.server.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -17,6 +20,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 
 namespace invoicing.server
 {
@@ -81,11 +85,29 @@ namespace invoicing.server
                 options.UseSqlite(Configuration.GetConnectionString("InvoicingDbContextConnection"))
             );
 
-//https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-3.0
+            //https://docs.microsoft.com/en-us/aspnet/core/security/authentication/identity-api-authorization?view=aspnetcore-3.0
 
             services.AddDefaultIdentity<Models.User>()
                 .AddEntityFrameworkStores<Data.InvoicingDbContext>();
 
+            var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Tokens:Key"]));
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
+                {
+                    options.RequireHttpsMetadata = false;
+                    options.SaveToken = true;
+                    options.TokenValidationParameters = new TokenValidationParameters()
+                    {
+                        IssuerSigningKey = signingKey,
+                        ValidateAudience = true,
+                        ValidAudience = this.Configuration["Tokens:Audience"],
+                        ValidateIssuer = true,
+                        ValidIssuer = this.Configuration["Tokens:Issuer"],
+                        ValidateLifetime = true,
+                        ValidateIssuerSigningKey = true
+                    };
+                });
+            //     .AddOAuth();
             services.AddLogging(options => options.AddConsole());
             services.AddMvc()
                 //.AddMvcOptions(options => options.Filters.Add(new AuthorizeFilter()))
@@ -115,8 +137,8 @@ namespace invoicing.server
                     .RequireAuthorization();
             });
 
-            app.UseAuthorization();
             app.UseAuthentication();
+            app.UseAuthorization();
             app.UseMvc();
         }
     }

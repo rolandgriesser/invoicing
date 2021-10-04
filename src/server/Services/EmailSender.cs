@@ -6,7 +6,8 @@ namespace invoicing.server.Services {
     {
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            throw new System.NotImplementedException();
+            System.Console.WriteLine("Sending email to "+email+": " + subject + "\r\n" + htmlMessage);
+            return Task.FromResult(true);
         }
     }
 }
